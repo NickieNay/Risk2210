@@ -9,18 +9,28 @@ import com.nesler.risk.base.Territory;
 public class TerritoryConstants {
 
 	public enum Territories {
-		AMAZON_DESERT(0), ANDEAN_NATIONS(1), ARGENTINA(2), NUEVO_TIMOTO(3);
+		AMAZON_DESERT("Amazon_Desert", 0), 
+		ANDEAN_NATIONS("Andean Nations", 1), 
+		ARGENTINA("Argentina", 2), 
+		NUEVO_TIMOTO("Nuevo Timoto", 3);
 		
 		private final int index;
+		private final String displayName;
 		
-		Territories(int index){
+		Territories(String displayName, int index){
 			this.index = index;
+			this.displayName = displayName;
+		}
+		
+		public String getDisplayName(){
+			return displayName;
 		}
 		
 		public int getIndex(){
 			return index;
 		}
 	}
+	
 
 	/*
 	 * the following enums declare adjacent territories
@@ -49,7 +59,7 @@ public class TerritoryConstants {
 	String ARGENTINA = "Argentina";
 	String NUEVO_TIMOTO = "Nuevo Timoto";
 	
-	Territory AMAZON_DESERT = new Territory(Territories.AMAZON_DESERT, "Amazon Desert", WorldConstants.TerritoryTypes.LAND, 0);
+	//Territory AMAZON_DESERT = new Territory(Territories.AMAZON_DESERT, "Amazon Desert", WorldConstants.TerritoryTypes.LAND, 0);
 	
 	//create object to hold initial attributes for Territories
 	
