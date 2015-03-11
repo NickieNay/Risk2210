@@ -2,17 +2,18 @@ package com.nesler.risk.base;
 
 public class Territory {
 	
-	private String territoryName;
 	private String displayName;
 	private int numberOfArmies;
-	private String territoryType;
+	private Type territoryType;
 	private int indexNumber;
 	private String owner;
 	
+	public enum Type {
+		LAND, WATER, MOON
+	}
 	
 	
-	public Territory (String internalName, String displayName, String type, int indexNumber){
-		this.territoryName = internalName;
+	public Territory (String displayName, Type type, int indexNumber){
 		this.displayName = displayName;
 		this.territoryType = type;
 		this.indexNumber = indexNumber;
@@ -47,7 +48,7 @@ public class Territory {
 		return displayName;
 	}
 	
-	public String getType(){
+	public Type getType(){
 		return territoryType;
 	}
 

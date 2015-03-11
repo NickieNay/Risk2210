@@ -17,15 +17,8 @@ public class WorldConstants {
 		BLUE, RED, YELLOW, GREEN, BLACK
 	}
 	
-	public enum TerritoryTypes {
-		LAND, WATER, MOON
-	}
-	
 	public enum Continents {
 		NORTH_AMERICA, SOUTH_AMERICA, AFRICA, EUROPE, ASIA, AUSTRALIA
 	}
 
-	public enum Territories {
-		MEXICO, CANADA
-	}
 }

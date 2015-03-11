@@ -5,32 +5,40 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.nesler.risk.base.Territory;
+import com.nesler.risk.base.Territory.Type;
 
 public class TerritoryConstants {
 
 	public enum Territories {
-		AMAZON_DESERT("Amazon_Desert", 0), 
-		ANDEAN_NATIONS("Andean Nations", 1), 
-		ARGENTINA("Argentina", 2), 
-		NUEVO_TIMOTO("Nuevo Timoto", 3);
-		
+		AMAZON_DESERT("Amazon Desert", Type.LAND, 0), 
+		ANDEAN_NATIONS("Andean Nations", Type.LAND, 1), 
+		ARGENTINA("Argentina", Type.LAND, 2), 
+		NUEVO_TIMOTO("Nuevo Timoto", Type.LAND, 3);
+
 		private final int index;
 		private final String displayName;
-		
-		Territories(String displayName, int index){
+		private final Type type;
+
+		Territories(String displayName, Type type, int index) {
 			this.index = index;
 			this.displayName = displayName;
+			this.type = type;
 		}
-		
-		public String getDisplayName(){
+
+		public String getDisplayName() {
 			return displayName;
 		}
-		
-		public int getIndex(){
+
+		public Type getType() {
+			return type;
+		}
+
+		public int getIndex() {
 			return index;
 		}
 	}
-	
+
+	Territories[] face = Territories.values();
 
 	/*
 	 * the following enums declare adjacent territories
@@ -51,17 +59,13 @@ public class TerritoryConstants {
 		AMAZON_DESERT, ANDEAN_NATIONS, ARGENTINA
 	}
 
-	/*
-	 * The following string values are to be used for territory display names
-	 */
-	//String AMAZON_DESERT = "Amazon Desert";
-	String ANDEAN_NATIONS = "Andean Nation";
-	String ARGENTINA = "Argentina";
-	String NUEVO_TIMOTO = "Nuevo Timoto";
-	
-	//Territory AMAZON_DESERT = new Territory(Territories.AMAZON_DESERT, "Amazon Desert", WorldConstants.TerritoryTypes.LAND, 0);
-	
-	//create object to hold initial attributes for Territories
-	
+	// In the world, upon create, iterate through all enums and create.
+	Territory AMAZON_DESERT = new Territory(
+			Territories.AMAZON_DESERT.displayName,
+			Territories.AMAZON_DESERT.type, 
+			Territories.AMAZON_DESERT.index);
+
+	// create object to hold initial attributes for Territories
+
 	// why not just create them here?
 }
