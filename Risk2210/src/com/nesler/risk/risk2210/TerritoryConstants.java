@@ -1,9 +1,25 @@
 package com.nesler.risk.risk2210;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import com.nesler.risk.base.Territory;
+
 public class TerritoryConstants {
 
 	public enum Territories {
-		AMAZON_DESERT, ANDEAN_NATIONS, ARGENTINA, NUEVO_TIMOTO
+		AMAZON_DESERT(0), ANDEAN_NATIONS(1), ARGENTINA(2), NUEVO_TIMOTO(3);
+		
+		private final int index;
+		
+		Territories(int index){
+			this.index = index;
+		}
+		
+		public int getIndex(){
+			return index;
+		}
 	}
 
 	/*
@@ -28,9 +44,14 @@ public class TerritoryConstants {
 	/*
 	 * The following string values are to be used for territory display names
 	 */
-	String AMAZON_DESERT = "Amazon Desert";
+	//String AMAZON_DESERT = "Amazon Desert";
 	String ANDEAN_NATIONS = "Andean Nation";
 	String ARGENTINA = "Argentina";
 	String NUEVO_TIMOTO = "Nuevo Timoto";
-
+	
+	Territory AMAZON_DESERT = new Territory(Territories.AMAZON_DESERT, "Amazon Desert", WorldConstants.TerritoryTypes.LAND, 0);
+	
+	//create object to hold initial attributes for Territories
+	
+	// why not just create them here?
 }
