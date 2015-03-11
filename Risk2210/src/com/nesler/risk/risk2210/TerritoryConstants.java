@@ -38,8 +38,6 @@ public class TerritoryConstants {
 		}
 	}
 
-	Territories[] face = Territories.values();
-
 	/*
 	 * the following enums declare adjacent territories
 	 */
@@ -59,13 +57,4 @@ public class TerritoryConstants {
 		AMAZON_DESERT, ANDEAN_NATIONS, ARGENTINA
 	}
 
-	// In the world, upon create, iterate through all enums and create.
-	Territory AMAZON_DESERT = new Territory(
-			Territories.AMAZON_DESERT.displayName,
-			Territories.AMAZON_DESERT.type, 
-			Territories.AMAZON_DESERT.index);
-
-	// create object to hold initial attributes for Territories
-
-	// why not just create them here?
 }
