@@ -1,14 +1,15 @@
 package com.nesler.risk.risk2210;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-import com.nesler.risk.base.Territory;
+import java.util.LinkedList;
+import java.util.TreeMap;
+
 import com.nesler.risk.base.Territory.Type;
 
 public class TerritoryConstants {
-
+ 
+	private TreeMap _adjacencyMap = new TreeMap();
+	
 	public enum Territories {
 		AMAZON_DESERT("Amazon Desert", Type.LAND, 0), 
 		ANDEAN_NATIONS("Andean Nations", Type.LAND, 1), 
@@ -18,6 +19,7 @@ public class TerritoryConstants {
 		private final int index;
 		private final String displayName;
 		private final Type type;
+		
 
 		Territories(String displayName, Type type, int index) {
 			this.index = index;
@@ -36,14 +38,12 @@ public class TerritoryConstants {
 		public int getIndex() {
 			return index;
 		}
+		
 	}
 
-	/*
-	 * the following enums declare adjacent territories
-	 */
-	public enum AMAZON_DESERT {
-		ANDEAN_NATIONS, ARGENTINA, NUEVO_TIMOTO
-	}
+	
+	Territories[] amazonDesert = {Territories.ANDEAN_NATIONS, Territories.ARGENTINA, Territories.NUEVO_TIMOTO};
+	
 
 	public enum ANDEAN_NATIONS {
 		AMAZON_DESERT, ARGENTINA, NUEVO_TIMOTO
@@ -57,4 +57,13 @@ public class TerritoryConstants {
 		AMAZON_DESERT, ANDEAN_NATIONS, ARGENTINA
 	}
 
+	private void setAdjacencyList(Territories nodeTerritory, Territories[] adjacentTerritories) {
+		LinkedList adjacencyList = new LinkedList();
+		for(Territories terr:adjacentTerritories){
+			adjacencyList.add(terr.getIndex());
+		}
+		
+		_adjacencyMap.put(nodeTerritory.getIndex(), adjacencyList);
+	}
+	
 }

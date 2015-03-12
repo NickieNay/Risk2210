@@ -15,19 +15,28 @@ public class TestCreateTerritories {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		// Create all territories in TerritoryConstants, and put them in a TreeMap
+		// Using Index as the Key and the Territory as the Value.
 		TreeMap territoryMap = new TreeMap();
 		for(Territories territory:Territories.values()){
-			territoryMap.put(territory.getIndex(), new Territory(territory.getDisplayName(), territory.getType(), territory.getIndex()));
+			territoryMap.put(territory.getIndex(), new Territory(territory.getDisplayName(), 
+																	territory.getType(), 
+																	territory.getIndex()));
 		}
 		
 		Set set = territoryMap.entrySet();
 		Iterator iterator = set.iterator();
 		
-		while (iterator.hasNext()){
+		// Retrieve the Key and Value from the hash map and 
+		// print display name, territory type and number of armies on territory.
+		while (iterator.hasNext()) {
 			Map.Entry me = (Map.Entry) iterator.next();
-			System.out.print(me.getKey() + ": ");
 			Territory terr = (Territory) me.getValue();
-	        System.out.println(terr.getDisplayName() + " of type " + terr.getType() + " has " + terr.getNumberofArmies() + " armies");
+
+			System.out.print(me.getKey() + ": ");
+	        System.out.println(terr.getDisplayName() + " of type " + 
+	        					terr.getType() + " has " + 
+	        					terr.getNumberofArmies() + " armies");
 		}
 
 	}

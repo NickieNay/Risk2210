@@ -26,6 +26,10 @@ public class Territory {
 	
 	public void removeArmies(int armies){
 		this.numberOfArmies -= armies;
+		
+		//if (numberOfArmies == 0){
+		//	this.owner = null;
+		//}
 	}
 	
 	public int getNumberofArmies(){
