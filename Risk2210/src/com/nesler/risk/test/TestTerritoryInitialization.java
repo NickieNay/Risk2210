@@ -12,6 +12,9 @@ import com.nesler.risk.risk2210.TerritoryConstants;
 public class TestTerritoryInitialization {
 
 	public static void main(String[] args) {
+		final long startTime = System.nanoTime();
+		final long endTime;
+		final float endTimeSeconds;
 
 		TerritoryConstants terrconst = new TerritoryConstants();
 		
@@ -41,7 +44,9 @@ public class TestTerritoryInitialization {
 	        System.out.println(terr.getDisplayName() + "is adjacent to " + adjacentTerr.getDisplayName());
 	        }
 		}
-
+		endTime = System.nanoTime() - startTime;
+		endTimeSeconds = (float) endTime / 1000000000;
+		System.out.println("\nThis test took:  " + endTime + "ns  (" + endTimeSeconds + "s)");
 	}
 
 }

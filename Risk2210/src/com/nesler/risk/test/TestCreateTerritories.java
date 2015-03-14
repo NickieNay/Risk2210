@@ -13,8 +13,9 @@ import com.nesler.risk.risk2210.TerritoryConstants.Territories;
 public class TestCreateTerritories {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+		final long startTime = System.nanoTime();
+		final long endTime;
+		final float endTimeSeconds;
 		// Create all territories in TerritoryConstants, and put them in a TreeMap
 		// Using Index as the Key and the Territory as the Value.
 		TreeMap territoryMap = new TreeMap();
@@ -38,7 +39,10 @@ public class TestCreateTerritories {
 	        					terr.getType() + " has " + 
 	        					terr.getNumberofArmies() + " armies");
 		}
-
+		
+		endTime = System.nanoTime() - startTime;
+		endTimeSeconds = (float) endTime / 1000000000;
+		System.out.println("\nThis test took  " + endTime + "ns  (" +endTimeSeconds + "s)");
 	}
 
 }
