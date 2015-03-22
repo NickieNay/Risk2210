@@ -1,12 +1,58 @@
 package com.nesler.risk.test;
 
+import java.util.EnumMap;
+import java.util.EnumSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.Iterator;
+import java.util.EnumSet;
 
 public class StringVsIntTest {
+	
+	enum Countries {
+		 AFGHANISTAN,
+		 ALBANIA,
+		 ALGERIA,
+		 ANDORRA,
+		 ANGOLA,
+		 ARGENTINA,
+		 ARMENIA,
+		 AUSTRALIA,
+		 AUSTRIA,
+		 AZERBAIJAN,
+		 HONDURAS,
+		 HUNGARY,
+		 ICELAND,
+		 IRAN,
+		 IRAQ,
+		 IRELAND,
+		 ISRAEL,
+		 ITALY,
+		 ROMANIA,
+		 RUSSIA,
+		 AFGHANISTAN_1,
+		 ALBANIA_1,
+		 ALGERIA_1,
+		 ANDORRA_1,
+		 ANGOLA_1,
+		 ARGENTINA_1,
+		 ARMENIA_1,
+		 AUSTRALIA_1,
+		 AUSTRIA_1,
+		 AZERBAIJAN_1,
+		 HONDURAS_1,
+		 HUNGARY_1,
+		 ICELAND_1,
+		 IRAN_1,
+		 IRAQ_1,
+		 IRELAND_1,
+		 ISRAEL_1,
+		 ITALY_1,
+		 ROMANIA_1,
+		 RUSSIA_1,
+	}
 
 	/**
 	 * This test declares two TreeMaps, one with strings and one with integers, to evaluate the 
@@ -26,9 +72,19 @@ public class StringVsIntTest {
 		final long endTimeString;
 		final long startTimeInt;
 		final long endTimeInt;
+		final long startTimeEnum;
+		final long endTimeEnum;
 		
 		TreeMap<String, LinkedList<String>> stringMap = new TreeMap<String, LinkedList<String>>();
 		TreeMap<Integer, LinkedList<Integer>> intMap = new TreeMap<Integer, LinkedList<Integer>>();
+		
+		EnumSet<Countries> enumeratedSet = EnumSet.range(Countries.AFGHANISTAN, Countries.RUSSIA_1);
+		EnumMap<Countries, EnumSet<Countries>> enumeratedMap = new EnumMap<>(Countries.class);
+		for(Countries country:enumeratedSet){
+			enumeratedMap.put(country, enumeratedSet);
+		}
+		
+		
 		
 		stringList.add("Afghanistan");
 		stringList.add("Albania");
@@ -50,6 +106,26 @@ public class StringVsIntTest {
 		stringList.add("Italy");
 		stringList.add("Romania");
 		stringList.add("Russia");
+		stringList.add("Afghanistan_1");
+		stringList.add("Albania_1");
+		stringList.add("Algeria_1");
+		stringList.add("Andorra_1");
+		stringList.add("Angola_1");
+		stringList.add("Argentina_1");
+		stringList.add("Armenia_1");
+		stringList.add("Australia_1");
+		stringList.add("Austria_1");
+		stringList.add("Azerbaijan_1");
+		stringList.add("Honduras_1");
+		stringList.add("Hungary_1");
+		stringList.add("Iceland_1");
+		stringList.add("Iran_1");
+		stringList.add("Iraq_1");
+		stringList.add("Ireland_1");
+		stringList.add("Israel_1");
+		stringList.add("Italy_1");
+		stringList.add("Romania_1");
+		stringList.add("Russia_1");
 		
 		intList.add(0);
 		intList.add(1);
@@ -72,6 +148,25 @@ public class StringVsIntTest {
 		intList.add(18);
 		intList.add(19);
 		intList.add(20);
+		intList.add(21);
+		intList.add(22);
+		intList.add(23);
+		intList.add(24);
+		intList.add(25);
+		intList.add(26);
+		intList.add(27);
+		intList.add(28);
+		intList.add(29);
+		intList.add(30);
+		intList.add(31);
+		intList.add(32);
+		intList.add(33);
+		intList.add(34);
+		intList.add(35);
+		intList.add(36);
+		intList.add(37);
+		intList.add(38);
+		intList.add(39);
 		
 		// populate StringMap
 		for(String country:stringList){
@@ -133,9 +228,30 @@ public class StringVsIntTest {
 		}
 		endTimeInt = System.nanoTime() - startTimeInt;
 		
+		
+		
+		
+		Set enumSet = enumeratedMap.keySet();
+		iterator = enumSet.iterator();
+		Countries keyEnum = (Countries) iterator.next();
+		// Enum Search
+		startTimeEnum = System.nanoTime();
+		
+		while (iterator.hasNext()){
+			Countries searchCountry = (Countries) iterator.next();
+			
+			Set<Countries> searchSet = enumeratedMap.get(keyEnum);
+			searchSet.contains(searchCountry);
+			
+			keyEnum = searchCountry;
+			
+		}
+		endTimeEnum = System.nanoTime() - startTimeEnum;
+		
 		// print results
 		System.out.println("String search took:  " + endTimeString + "ns");
 		System.out.println("Integer search took:  " + endTimeInt + "ns");
+		System.out.println("Enum search took:  " + endTimeEnum + "ns");
 
 	}
 
